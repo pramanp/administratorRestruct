@@ -1,0 +1,28 @@
+<div class="function-area">
+    <ul>
+        <li><a ng-click="onSaveFunctionRights()"> <img height="17" src="/assets/images/green-add-icon.png"> Save </a></li>
+    </ul>
+    <ul class="pull-right function-right">
+        <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+    </ul>
+</div>
+<div class="row">
+    <div class="col-sm-12 ">
+        <div class="common-gray-box clearfix edit-function-right funcRight">
+            <h3 class="heading"><vc-label vc-property="admin.usergroups.usergroupFuncRight.heading1"></vc-label></h3>
+
+            <div class="content">
+                <vc-admin-usergroup-function-rights-tree height="400px"></vc-admin-usergroup-function-rights-tree>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="headingBox">
+            <h3 class="heading"><vc-label vc-property="admin.usergroups.usergroupFuncRight.heading2"></h3>
+        </div>
+        <p class="blankSpace">&nbsp;</p>
+    <vc-functional-right-grid></vc-functional-right-grid>
+
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="hierarchical-tab clearfix">
+    <div class="function-area" ng-init="getData()">
+        <ul>
+            <li><a ng-click="saveSuPropertyRights()"> <img height="17" src="/assets/images/green-add-icon.png"> Save
+            </a></li>
+
+        </ul>
+        <ul class="pull-right function-right">
+            <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a
+                ng-click="act.action"><img height="22" ng-src="{{act.icon}}"></a></li>
+        </ul>
+    </div>
+    <div class="col-sm-12">
+        <div class="headingBox">
+            <h3 class="heading">
+                <vc-label vc-property="admin.systemuser.hdatarights.propheading1">
+            </h3>
+        </div>
+        <p class="blankSpace">&nbsp;</p>
+
+        <vc-sysuser-hierarchical-right-prop-grid></vc-sysuser-hierarchical-right-prop-grid>
+    </div>
+    <div class="col-sm-12">
+        <div class="headingBox">
+            <h3 class="heading">
+                <vc-label vc-property="admin.systemuser.hdatarights.propheading2">
+            </h3>
+        </div>
+        <p class="blankSpace">&nbsp;</p>
+        <vc-sysuser-su-hierarchical-right-prop-grid></vc-sysuser-su-hierarchical-right-prop-grid>
+    </div>
+</div>

@@ -1,0 +1,157 @@
+<!-- functional area for custom category -->
+
+<div  ng-if="!createCat">
+  <div class="function-area">
+    <ul>
+      <li><a ng-click="customProperties.create()"><img height="16" src="assets/images/add-green-icon.png">
+        <vc-label vc-property="customproperties.customproperties.button.create"></vc-label>
+        </a></li>
+    </ul>
+    <ul class="pull-right function-right">
+      <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+    </ul>
+  </div>
+  <!-- grid display for custom category -->
+
+  <div class="headingBox">
+    <h3 class="heading">CURRENT CATEGORIES</h3>
+    <p class="blankSpace">&nbsp; </p>
+    <vc-custom-properties-grid></vc-custom-properties-grid>
+  </div>
+</div>
+
+<!-- functional area for create custom category -->
+<div ng-if="createCat">
+  <div class="function-area">
+    <ul>
+      <li><a ng-click="customProperties.checkBoxTest();submitted = true;(myForm.$valid)?customProperties.save():''"><img height="20" src="assets/images/save-icon.png">
+        <vc-label vc-property="customproperties.customproperties.button.save"></vc-label>
+        </a></li>
+      <li><a ng-click="customProperties.back()"><img height="20" src="assets/images/arrow-back-16.png">
+        <vc-label vc-property="customproperties.customproperties.button.back"></vc-label>
+        </a></li>
+    </ul>
+    <ul class="pull-right function-right">
+      <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+    </ul>
+  </div>
+
+  <!-- html for create custom category -->
+
+  <form name="myForm" novalidate">
+    <div class="gridWraper" ng-class="{true: 'error'}[submitted && myForm.$invalid]">
+      <div id="FormErrors" class="errorPopupBox" ng-if="customProperties.checkedErrorMsg">
+        <p class="error-msg">The following errors have occured:</p>
+        <ul>
+          <li>You have to select at least one visibility level for the category.</li>
+        </ul>
+      </div>
+      <p class="blankSpace">&nbsp; </p>
+      <div class="col-md-6 col-sm-12 ltRtPading">
+        <div class="headingBox">
+          <h3 class="heading">CREATE NEW CATEGORY</h3>
+        </div>
+        <p class="blankSpace">&nbsp; </p>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="dialogbox-table-bg">
+          <tr>
+            <th colspan="2">Category data </th>
+          </tr>
+          <tr>
+            <td colspan="2"><vc-text-box-bottom vc-require="true" vc-property="customproperties.customproperties.field.name" ng-model="customProperties.createCategory.designator"></vc-text-box-bottom>
+          </tr>
+        </table>
+        <p class="blankSpace">&nbsp; </p>
+        <div class="common-gray-box clearfix">
+          <h3 class="heading">Visibility</h3>
+          <div class="content">
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleAdministration" name="">
+              Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleRealty" name="">
+              Reality Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleConstruction" name="">
+              Complex Of Building Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleBuilding" name="">
+              Building Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleOutsideInstallation" name="">
+              Outdoor Facilities Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleInstallation" name="">
+              Facility Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleInstallationPart" name="">
+              Subunits</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleDevice" name="">
+              Device Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleMains" name="">
+              Supply Network Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleMainsPart" name="">
+              Supply Power Supply Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleFloor" name="">
+              Floor</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleRoom" name="">
+              Space Plane</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleISP" name="">
+              ISP Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleController" name="">
+              Controller Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleOrganisation" name="">
+              Organisation Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleDivision" name="">
+              Division Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleDepartment" name="">
+              Department Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visiblePerson" name="">
+              Person Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleArticle" name="">
+              Article-Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleInventory" name="">
+              Inventory Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleProject" name="">
+              Project-Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleTaskPacket" name="">
+              Work Package Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleLockingAdministration" name="">
+              Closing Administrative Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleLockingSystem" name="">
+              Locking System</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleLockingGroup" name="">
+              Closing Group Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleLock" name="">
+              Castle Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleKey" name="">
+              Key Level</p>
+            <p>
+              <input type="checkbox" value="" ng-model="customProperties.createCategory.visibleLeaseUnit" name="">
+              Rental Unit Level</p>
+          </div>
+        </div>
+      </div>
+      <p class="blankSpace">&nbsp; </p>
+    </div>
+  </form>
+</div>

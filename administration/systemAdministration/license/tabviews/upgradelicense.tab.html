@@ -1,0 +1,41 @@
+<div class="function-area">
+ <ul>
+     <li><span style="float:left;"><img height="16" src="/assets/images/download-icon.png"></span>
+    <div id="browsFileContainer" title="Choose File">
+<div id="doit">
+    <vc-label vc-property="sysadmin.license.field.import"></vc-label>
+</div>
+<input type="file" name="file" id="hid" type="file" size=1 onchange="angular.element(this).scope().uploadFile(this.files)"/>
+</div> 
+    </li>
+      </ul>
+    <ul class="pull-right function-right">
+        <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+    </ul>
+</div>
+
+<div class="gridWraper">
+     <div class="col-md-6 col-sm-12 ltRtPading">
+        <div class="common-gray-box clearfix">
+            <h3 class="heading">Upgrade licence</h3>
+            <div class="content">
+                <p><strong>Concerning upgrade purposes please contact</strong>:</p>
+                <p><strong>EBCsoft GmbH</strong>
+                    <br>Dohnanyistraße 30
+                    <br>04103 Leipzig
+                    <br>Tel.: 	+49 341 - 2566830
+                    <br>Fax: 	+49 341 - 25668350
+                    <br>Email: 	info@ebcsoft.de
+                    <br>Internet: 	www.ebcsoft.de
+                    <br>Support:
+                    <br>Tel.: 	0700-01001007
+                    <br>Email: 	support@ebcsoft.de
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+

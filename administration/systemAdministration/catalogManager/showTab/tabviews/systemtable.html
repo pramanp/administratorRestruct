@@ -1,0 +1,44 @@
+<!--<div id="Overview" class="tab-pane fade in active">-->
+<div  ng-controller="CatMgrSysTbl" style="padding-left: 0px; padding-right: 0px;">
+    <div class="function-area">
+        <ul>
+            <li><a ng-click="addSysTableRow()"> <img height="17" src="assets/images/add-green-icon.png"> Add </a></li>
+        </ul>
+        <ul class="pull-right function-right">
+            <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom">
+              <a ng-click="onToolClick($event, act)"> 
+                <img height="22" ng-src="{{act.icon}}">
+              </a>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+    <div class="col-md-6 col-sm-12">
+                    <div class="common-gray-box clearfix">
+                        <h3 class="heading">System tables</h3>
+                        <div class="content">
+
+                        <vc-cat-mgr-sys-tbl></vc-cat-mgr-sys-tbl>
+                        <vc-tool-tip 
+                        tool-tip-lable      = "tooltip.catalogmanaager.systemtable.systemtable.lable" 
+                        title-description   = "tooltip.catalogmanaager.systemtable.systemtable.titledescription"
+                        field-uid           = "tooltip.catalogmanaager.systemtable.systemtable">
+                        </vc-tool-tip>
+                        <!--
+                            <select class="form-control form-group clearfix">
+                                <option value="0" selected="selected">001 - EBCsoft GmbH NL Leipzig</option>
+                                <option value="1">004 - Hochschule für Energie</option>
+                            </select>
+                        -->
+                            <a style="margin-top: 10px;" class="btn btn-primary" ng-click="getTable();" href="javascript:void(0)">Load Data</a>
+                        </div>
+                    </div>
+                    </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+        <vc-system-tables-grid></vc-system-tables-grid>
+            </div>
+    </div>
+</div>

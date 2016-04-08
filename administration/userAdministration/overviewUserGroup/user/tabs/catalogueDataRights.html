@@ -1,0 +1,28 @@
+<div class="function-area" ng-init="initTab()">
+    <ul>
+        <li><a ng-click="saveCatalogueRights()"> <img height="17" src="/assets/images/green-add-icon.png"> Save </a></li>
+    </ul>
+
+    <ul class="pull-right function-right">
+        <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+    </ul>
+</div>
+<div class="">
+    <div class="headingBox">
+        <h3 class="heading">Catalogues </h3>
+    </div>
+    <p class="blankSpace">&nbsp;</p>
+    <vc-select-box-bottom class="col-50" vc-list-content="catalogueOptions" ng-model="catalogueSelected.value" vc-list-display-key="index" vc-list-display-var="displayName"></vc-select-box-bottom>
+</div>
+
+<p class="blankSpace">&nbsp;</p>
+
+<div class="">
+    <div class="headingBox">
+        <h3 class="heading">Data Rights on catalogue items</h3>
+    </div>
+    <p class="blankSpace">&nbsp;</p>
+
+    <vc-usergroup-catalogue-rights></vc-usergroup-catalogue-rights>
+
+</div>

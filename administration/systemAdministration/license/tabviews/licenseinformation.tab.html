@@ -1,0 +1,72 @@
+<div class="function-area">
+  <!--  <ul>
+        <li><input type="file" vc-file-model="myFile"/></li>
+        <li><a ng-click="license.uploadFile()"> <img height="16" src="/assets/images/download-icon.png"> <vc-label vc-property="customproperties.folders.tabs.import"></vc-label> </a></li>
+    </ul>-->
+    <ul class="pull-right function-right">
+        <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+    </ul>
+</div>
+
+<div class="gridWraper">
+    <div class="col-md-6 col-sm-12 ltRtPading">
+
+        <div class="headingBox">
+                    <h3 class="heading">VITRIcon - License</h3>
+                 </div>
+        <p class="blankSpace">&nbsp; </p>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="dialogbox-table-bg">
+            <tr>
+
+                <th colspan="2" >Licensedata </th>
+            </tr>
+            <tr>
+                <td><strong><vc-label vc-property="sysadmin.license.field.status"></vc-label></strong> </td>
+                <td><span ng-bind="license.status"></span></td>
+            </tr>
+            <tr>
+                <td><strong><vc-label vc-property="sysadmin.license.field.customer"></vc-label></strong>  </td>
+                <td><vc-select-box-bottom vc-list-content="license.customerNameList" vc-getdata="getCustomerName(data)" ng-model="license.customerName">
+          </vc-select-box-bottom></td>
+            </tr>
+            <tr>
+                <td><strong><vc-label vc-property="sysadmin.license.field.version"></vc-label></strong>  </td>
+                <td><span ng-bind="license.version"></span></td>
+            </tr>
+
+            <tr>
+                <td><strong><vc-label vc-property="sysadmin.license.field.check"></vc-label></strong>  </td>
+                <td><ul>
+                    <li ng-repeat="value in license.allowedPackedRSsList track by $index">
+                      {{ value }}
+                    </li>
+                  </ul></td>
+            </tr>
+            <tr>
+                <td><strong><vc-label vc-property="sysadmin.license.field.maxMandator"></vc-label></strong>  </td>
+                <td><span ng-bind="license.maxMandator"></span></td>
+            </tr>
+            <tr>
+                <td><strong><vc-label vc-property="sysadmin.license.field.maxOperatorValue"></vc-label></strong>  </td>
+                <td><span ng-bind="license.maxOperatorValue"></span></td>
+            </tr>
+            <tr>
+                <td><strong><vc-label vc-property="sysadmin.license.field.maxConcurrentOperators"></vc-label></strong>  </td>
+                <td><span ng-bind="license.maxConcurrentOperators"></span></td>
+            </tr>
+            <tr>
+                <td><strong><vc-label vc-property="sysadmin.license.field.maxVitricadOperators"></vc-label></strong>  </td>
+                <td><span ng-bind="license.maxVitricadOperators"></span></td>
+            </tr>
+
+        </table>
+    </div>
+<p class="blankSpace">&nbsp; </p>
+  <div class="row">
+    <div class="col-sm-12">
+      <vc-license-grid></vc-license-grid>
+
+    </div>
+  </div>
+</div>
+

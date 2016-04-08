@@ -1,0 +1,102 @@
+<div class="function-area" ng-init="calculation.init()">
+  <ul>
+    <li><a ng-click="calculation.interpolatedCheckBoxTest();submitted = true;(myForm.$valid) ? calculation.reCalculationInterpolate() : ''"> <img height="16" src="/assets/images/green-add-icon.png">
+            <vc-label vc-property="sysadmin.calculation.button.recalculation"></vc-label>
+        </a></li>
+  </ul>
+  <ul class="pull-right function-right">
+    <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+  </ul>
+</div>
+<form name="myForm" novalidate>
+<div class="gridWraper" ng-class="{true: 'error'}[submitted && myForm.$invalid]">
+    <div id="FormErrors" class="errorPopupBox" ng-if="calculation.startDateCheck || calculation.endDateCheck || calculation.checkedErrorMsg || calculation.vDateComparison" style="margin-bottom:15px;">
+        <p class="error-msg">The following errors have occured:</p>
+        <ul>
+          <li ng-if="calculation.startDateCheck">Please select start Date.</li>
+        </ul>
+        <ul>
+          <li ng-if="calculation.endDateCheck">Please select end Date.</li>
+        </ul>
+        <ul>
+          <li ng-if="calculation.checkedErrorMsg">A minimum of one data point must be selected !</li>
+        </ul>
+        <ul>
+          <li ng-if="calculation.vDateComparison">Start date has to be before end date!</li>
+        </ul>
+        
+      </div>
+       
+  <div class="col-md-6 col-sm-12 ltRtPading">
+    <div class="headingBox">
+      <h3 class="heading">UPDATE DATA POINTS</h3>
+    </div>
+    
+    <div class="helpMessage">                   
+                       The calculation may take a longer time under certain circumstances . Please do not cancel the operation !
+                </div>
+    
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="dialogbox-table-bg">
+      <tr>
+        <th> Property </th>
+      </tr>
+      <tr>
+          <td ><vc-select-box-bottom vc-type="reality" vc-getdata="getInterpolationId(data)" vc-list-content="calculation.InterpolationList" vc-list-display-key="id" vc-list-display-var="designator" ng-model="calculation.interpolationRealtyId">
+          </vc-select-box-bottom>
+          <vc-tool-tip 
+          tool-tip-lable      = "tooltip.calculation.interpolatedDataPoints.property.lable" 
+          title-description   = "tooltip.calculation.interpolatedDataPoints.property.titledescription"
+          field-uid           = "tooltip.calculation.interpolatedDataPoints.property">
+          </vc-tool-tip>
+          </td>
+      </tr>
+    </table>
+  </div>
+  <p class="blankSpace">&nbsp; </p>
+  <div class="col-md-6 col-sm-12 ltRtPading">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="dialogbox-table-bg">
+      <tr>
+        <th colspan="2"> Set Period </th>
+      </tr>
+      <tr>
+        <td>
+          <!--
+          <vc-label vc-property="sysadmin.calculation.field.sdate"></vc-label> 
+          -->
+            <span class="form-calender"><input type="text" required class="datepicker" ng-model="calculation.interpolatedStartDate"></span>
+<span class="pull-left text-normal">
+        <vc-tool-tip 
+        tool-tip-lable      = "tooltip.calculation.interpolatedDataPoints.sdate.lable" 
+        title-description   = "tooltip.calculation.interpolatedDataPoints.sdate.titledescription"
+        field-uid           = "tooltip.calculation.interpolatedDataPoints.sdate">
+        </vc-tool-tip>
+        </span>            
+       </td>
+        <td>
+          <!--
+          <vc-label vc-property="sysadmin.calculation.field.edate"></vc-label>
+          -->
+  <span class="form-calender">  <input type="text" required class="datepicker" ng-model="calculation.interpolatedEndDate"></span>
+<span class="pull-left text-normal"> <vc-tool-tip 
+          tool-tip-lable      = "tooltip.calculation.interpolatedDataPoints.edate.lable" 
+          title-description   = "tooltip.calculation.interpolatedDataPoints.edate.titledescription"
+          field-uid           = "tooltip.calculation.interpolatedDataPoints.edate">
+          </vc-tool-tip></span>
+         
+
+         
+         
+        </td>
+      </tr>
+    </table>
+    
+      <p class="blankSpace">&nbsp; </p>
+
+  </div>
+  <div class="col-sm-12 ltRtPading shorthelpMessage">
+ <vc-interpolated-datapoints-grid></vc-interpolated-datapoints-grid>
+ </div>
+ 
+</div>
+</form>

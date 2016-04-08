@@ -1,0 +1,35 @@
+<div class="function-area">
+    <ul>
+        <li><a ng-click="folders.importDoc()"> <img height="16" src="/assets/images/download-icon.png"> <vc-label vc-property="customproperties.folders.tabs.import"></vc-label> </a></li>
+        <li><a ng-click="folders.exportDoc()"> <img height="16" src="/assets/images/export-icon.png"> <vc-label vc-property="customproperties.folders.tabs.export"></vc-label> </a></li>
+
+    </ul>
+    <ul class="pull-right function-right">
+        <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+    </ul>
+</div>
+<div class="rt-content-box">
+     <div class="col-md-6 col-sm-12 ltRtPading">
+
+        <div class="headingBox">
+                    <h3 class="heading"><vc-label vc-property="customproperties.folders.labels.import"></vc-label></h3>
+                 </div>
+        <p class="blankSpace">&nbsp; </p>
+        <div class="common-gray-box clearfix function-right">
+            <h3 class="heading"><vc-label vc-property="customproperties.folders.labels.selectfile"></vc-label></h3>
+
+            <div class="content">
+                <input type="file" vc-file-model="myFile"  class="hidden">
+                <button class="btn btn-default btn-sm browse-btn" vc-upload-file>
+                    <vc-label vc-property="customproperties.folders.labels.uploadfile" >
+                    </vc-label>
+                </button>{{uploadFileName}}
+                <vc-tool-tip tool-tip-lable="tooltip.folder.filepath.lable"  title-description="tooltip.folder.filepath.titledescription" field-uid="tooltip.folder.filepath" ></vc-tool-tip>
+            </div>
+
+        </div>
+<!--         <vc-date-time-format vc-value ="Jan 07, 2016 05:35" vc-format="LLL"></vc-date-time-format>
+        <vc-number vc-value ="67418498.14654"></vc-number> -->
+
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<!--<div id="Overview" class="tab-pane fade in active">-->
+
+<div class="function-area" >
+
+   <ul class="pull-right function-right">
+        <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22"
+                                                                                   ng-src="{{act.icon}}"></a></li>
+    </ul>
+</div>
+
+<div class="col-md-6 col-sm-12 ltRtPading">
+  <div class="common-gray-box clearfix">
+    <h3 class="heading"> Mandator </h3>
+    <div class="content">
+      <select class="form-control form-group clearfix" ng-options="opt.dbId as opt.designator for opt in configuration.options" ng-model="configuration.selected_id" ng-change="configuration.getMandatorId(configuration.selected_id)">
+      </select>
+    </div>
+  </div>
+</div>
+<p class="blankSpace">&nbsp;</p>
+  <vc-configuration-paramter-grid></vc-configuration-paramter-grid>
+
+

@@ -1,0 +1,97 @@
+<div class="function-area" ng-init="getData()">
+    <ul>
+        <li ng-hide="usergroupuserCnrtllr.isAdminGroup"><a ng-click="submitted = true;(myForm.$valid)?onUpdateUsergroup():''"> <img height="17" src="/assets/images/green-add-icon.png"> Save </a></li>
+        <li ng-hide="usergroupuserCnrtllr.isAdminGroup"><a ng-click="onDeleteUsergroup()"> <img height="17" src="/assets/images/del-icon.png"> Delete User group</a></li>
+    </ul>
+    <ul class="pull-right function-right">
+        <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a class="{{act.name}}" ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+    </ul>
+</div>
+
+<div class="rt-content-box">
+    <form name="myForm" novalidate>
+          <!--<div class="confirm-msgbox">Access to administrator group data is only read only.</div>-->
+
+          <div class="gridWraper" ng-class="{true: 'error'}[submitted && myForm.$invalid]">
+               <div id="FormErrors" class="errorPopupBox" ng-if="usergroupuserCnrtllr.childError" style="margin-bottom:15px;">
+                <p class="error-msg">The following errors have occured:</p>
+                <ul>
+                    <li> Operator group <span ng-bind="usergroupuserCnrtllr.updateuser.designator"></span> could not be deleted because there are still operators that belong to this group. You can force the deletion of this operator group by selecting the "Explicit delete" option, but be aware that all operators belonging to this operator group will also be deleted!</li>
+                </ul>
+              </div>
+<div class="col-md-6 col-sm-12 ltRtPading">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="dialogbox-table-bg">
+                <tr>
+                    <th>Operator group data AS</th>
+                </tr>
+                <tr >
+                    <td>
+                        <vc-text-box-bottom vc-require="true" ng-model="usergroupuserCnrtllr.updateuser.designator"></vc-text-box-bottom>
+                        <vc-tool-tip
+                            tool-tip-lable      = "tooltip.overviewUsergroup.masterData.designation.lable"
+                            title-description   = "tooltip.overviewUsergroup.masterData.designation.titledescription"
+                            field-uid           = "tooltip.overviewUsergroup.masterData.designation"
+                            title-mandatory     = "true" >
+                        </vc-tool-tip>
+                </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <vc-select-box-bottom vc-disabled="false" vc-require=true vc-list-content="usergroupuserCnrtllr.mandant" vc-list-display-key="dbId" vc-list-display-var="designator" vc-getdata="getMandantBymId(data)" ng-model="usergroupuserCnrtllr.selectedMandator"></vc-select-box-bottom>
+
+                        <vc-tool-tip
+                            tool-tip-lable      = "tooltip.overviewUsergroup.masterData.mandant.lable"
+                            title-description   = "tooltip.overviewUsergroup.masterData.mandant.titledescription"
+                            field-uid           = "tooltip.overviewUsergroup.masterData.mandant"
+                            title-mandatory     = "true" >
+                        </vc-tool-tip>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <vc-text-area  vc-require=false ng-model="usergroupuserCnrtllr.updateuser.description"></vc-text-area>
+
+                        <vc-tool-tip
+                            tool-tip-lable      = "tooltip.overviewUsergroup.masterData.description.lable"
+                            title-description   = "tooltip.overviewUsergroup.masterData.description.titledescription"
+                            field-uid           = "tooltip.overviewUsergroup.masterData.description">
+                        </vc-tool-tip>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <vc-text-area ng-model="usergroupuserCnrtllr.updateuser.note"></vc-text-area>
+                        <vc-tool-tip
+                            tool-tip-lable      = "tooltip.overviewUsergroup.masterData.notes.lable"
+                            title-description   = "tooltip.overviewUsergroup.masterData.notes.titledescription"
+                            field-uid           = "tooltip.overviewUsergroup.masterData.notes">
+                        </vc-tool-tip>
+                    </td>
+                </tr>
+                <tr> <td><vc-check-box-bottom ng-disabled="usergroupuserCnrtllr.isAdminGroup" vc-property="admin.usergroups.adduser.adminCheckbox"
+                                              ng-model="usergroupuserCnrtllr.updateuser.isAdminGroup"></vc-check-box-bottom></td>  </tr>
+            </table>
+</div>
+            <p class="blankSpace">&nbsp; </p>
+
+<div class="col-md-6 col-sm-12 ltRtPading">
+
+            <div class="common-gray-box clearfix">
+                <h3 class="heading"><vc-label vc-property="admin.usergroups.adduser.extendedHead"></vc-label></h3>
+
+                <div class="content">
+                    <vc-check-box-bottom vc-property="admin.usergroups.adduser.extendedCheckbox"
+                                         ng-model="usergroupuserCnrtllr.deleteChildUser"></vc-check-box-bottom>
+                </div>
+            </div>
+
+</div>
+
+
+        </div>
+        <vc-bottom-tool-tip vc-content="bottomToolTip.groupmasterdata"></vc-bottom-tool-tip>
+    </form>
+
+</div>

@@ -1,0 +1,198 @@
+
+<div class="function-area" ng-init="getUserData()">
+    <ul>
+        <li><a ng-click="onUpdateUser()"> <img height="17" src="/assets/images/green-add-icon.png"> <vc-label vc-property="admin.systemuser.user.save"></vc-label> </a></li>
+        <li><a ng-click="submitted = true;(myForm.$valid)?onlockAcc():''"> <img height="17" src="/assets/images/lock.png"> <vc-label vc-property="admin.systemuser.user.lockAcc"></vc-label> </a></li>
+        <li><a ng-click="onUnlockAcc()"> <img height="17" src="/assets/images/unlock.png"> <vc-label vc-property="admin.systemuser.user.unlockAcc"></vc-label> </a></li>
+        <li><a ng-click="onDeleteUser()"> <img height="17" src="/assets/images/del-icon.png"> <vc-label vc-property="admin.systemuser.user.deleteUser"></vc-label></a></li>
+
+    </ul>
+    <ul class="pull-right function-right">
+        <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+    </ul>
+</div>
+
+<div class="rt-content-box">
+    <form name="myForm" novalidate>
+          <input type="password" style="display: none"/>
+    <!--<div class="confirm-msgbox">Access to administrator group data is only read only.</div>-->
+
+    <div class="gridWraper" ng-class="{true: 'error'}[submitted && myForm.$invalid]">
+  <div class="col-md-6 col-sm-12 ltRtPading">
+
+        <div class="common-gray-box clearfix function-right">
+            <h3 class="heading"><vc-label vc-property="admin.systemuser.user.grpMembrshp"></vc-label></h3>
+
+            <div class="content">
+                <span ng-model="systemuseruserCnrtllr.operatorgrpDesignator">{{systemuseruserCnrtllr.operatorgrpDesignator}}</span>
+            </div>
+        </div>
+</div>
+
+  <div class="col-md-6 col-sm-12 ltRtPadTab RtPading">
+
+        <div class="common-gray-box clearfix function-right">
+            <h3 class="heading"><vc-label vc-property="admin.systemuser.user.lastLogin"></vc-label></h3>
+
+            <div class="content">
+
+                <span ng-model="systemuseruserCnrtllr.updateuser.lastLogin">{{systemuseruserCnrtllr.updateuser.lastLogin
+                | DateTime:"ll"}}</span>
+            </div>
+        </div>
+
+</div>
+
+  <div class="col-md-6 col-sm-12 ltRtPading">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="dialogbox-table-bg">
+            <tr>
+                <th colspan="2"><vc-label vc-property="admin.systemuser.user.AccData"></vc-label></th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <vc-text-box-bottom vc-require="true" ng-model="systemuseruserCnrtllr.updateuser.login"></vc-text-box-bottom>
+
+                    <vc-tool-tip
+                        tool-tip-lable      = "tooltip.overviewUser.masterData.designation.lable"
+                        title-description   = "tooltip.overviewUser.masterData.designation.titledescription"
+                        field-uid           = "tooltip.overviewUser.masterData.designation"
+                        title-mandatory     = "true">
+                    </vc-tool-tip>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <vc-select-box-bottom vc-type='user' vc-disabled=systemuseruserCnrtllr.updateuser.systemAdmin  vc-list-content="systemuseruserCnrtllr.mandant" vc-list-display-key="dbId" vc-list-display-var="designator" vc-getdata="getUserGroupBymId(data)" ng-model="systemuseruserCnrtllr.selectedMandator"></vc-select-box-bottom>
+                    <vc-tool-tip
+                        tool-tip-lable      = "tooltip.overviewUser.masterData.mandant.lable"
+                        title-description   = "tooltip.overviewUser.masterData.mandant.titledescription"
+                        field-uid           = "tooltip.overviewUser.masterData.mandant"
+                        title-mandatory     = "true">
+                    </vc-tool-tip>
+                </td>
+
+                <td>
+                    <vc-select-box-bottom vc-disabled=systemuseruserCnrtllr.updateuser.systemAdmin vc-list-content="systemuseruserCnrtllr.mandantusergroup" vc-list-display-key="id" vc-list-display-var="designator" vc-getdata="getProfileByuId(data)" ng-model="systemuseruserCnrtllr.selectedUsergroup"></vc-select-box-bottom>
+
+                    <vc-tool-tip
+                        tool-tip-lable      = "tooltip.overviewUser.masterData.usergroup.lable"
+                        title-description   = "tooltip.overviewUser.masterData.usergroup.titledescription"
+                        field-uid           = "tooltip.overviewUser.masterData.usergroup"
+                        title-mandatory     = "true">
+                    </vc-tool-tip>
+                </td>
+
+            </tr>
+            <tr>
+
+                <td  colspan="2">
+                    <vc-select-box-bottom vc-list-content="systemuseruserCnrtllr.defaultProfile" vc-list-display-key="id" vc-list-display-var="" vc-getdata="getSelectedProfile(data)" ng-model="systemuseruserCnrtllr.profiles"></vc-select-box-bottom>
+                    <vc-tool-tip
+                        tool-tip-lable      = "tooltip.overviewUser.masterData.defaultProfile.lable"
+                        title-description   = "tooltip.overviewUser.masterData.defaultProfile.titledescription"
+                        field-uid           = "tooltip.overviewUser.masterData.defaultProfile"
+                        title-mandatory     = "true">
+                    </vc-tool-tip>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <vc-text-area ng-disabled=systemuseruserCnrtllr.updateuser.systemAdmin ng-model="systemuseruserCnrtllr.updateuser.notes"></vc-text-area>
+
+                    <vc-tool-tip
+                        tool-tip-lable      = "tooltip.overviewUser.masterData.notes.lable"
+                        title-description   = "tooltip.overviewUser.masterData.notes.titledescription"
+                        field-uid           = "tooltip.overviewUser.masterData.notes">
+                    </vc-tool-tip>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                   <span class="pull-left divisionWraper">
+                    <input type="text" class="comTextbox" ng-model="systemuseruserCnrtllr.orgLabel">
+                    <!--
+                    <span class="pull-left">Assign Organisation</span>
+                    -->
+                    <vc-tool-tip
+                        tool-tip-lable      = "tooltip.overviewUser.masterData.orgLabel.lable"
+                        title-description   = "tooltip.overviewUser.masterData.orgLabel.titledescription"
+                        field-uid           = "tooltip.overviewUser.masterData.orgLabel">
+                    </vc-tool-tip>
+</span>
+   <a class="divisionIcons labelCont" ng-click="openOrganisation()" ng-disabled="systemuseruserCnrtllr.isAssignOrg"><img height="16" src="/assets/images/green-edit-icon.png"></a>
+  <a class="divisionIcons labelCont" ng-click="systemuseruserCnrtllr.orgLabel = ''"> <img height="16" src="/assets/images/del-icon.png"></a>
+                </td>
+
+            </tr>
+        </table>
+        </div>
+
+  <div class="col-md-6 col-sm-12 ltRtPadTab RtPading">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="dialogbox-table-bg">
+            <tr>
+                <th colspan="2"><label class="ng-binding"> Password</label> </th>
+            </tr>
+
+            <tr>
+               <td colspan="2"><vc-check-box vc-property="admin.systemuser.user.ldapuser"
+                                          ng-model="systemuseruserCnrtllr.updateuser.ldap"></vc-check-box>
+                     </td>
+
+            </tr>
+
+           <tr>
+                <td width="50%">
+                    <input type="Password" class="comTextbox" ng-model="systemuseruserCnrtllr.updateuser.password">
+                    <!--
+                    <span class="pull-left"><vc-label vc-property="admin.systemuser.user.password"></vc-label></span>
+                    -->
+                    <vc-tool-tip
+                        tool-tip-lable      = "tooltip.overviewUser.masterData.password.lable"
+                        title-description   = "tooltip.overviewUser.masterData.password.titledescription"
+                        field-uid           = "tooltip.overviewUser.masterData.password"
+                        title-mandatory     = "true">
+                    </vc-tool-tip>
+
+                </td>
+
+                <td width="50%">
+                    <input type="Password" class="comTextbox" ng-model="systemuseruserCnrtllr.updateuser.confirmPassword">
+                    <!--
+                    <span class="pull-left"><vc-label vc-property="admin.systemuser.user.confirmpassword"></vc-label></span>
+                    -->
+                    <vc-tool-tip
+                        tool-tip-lable      = "tooltip.overviewUser.masterData.confirmpassword.lable"
+                        title-description   = "tooltip.overviewUser.masterData.confirmpassword.titledescription"
+                        field-uid           = "tooltip.overviewUser.masterData.confirmpassword"
+                        title-mandatory     = "true">
+                    </vc-tool-tip>
+                </td>
+            </tr>
+
+        </table>
+  <p class="blankSpace">&nbsp; </p>
+  <div class="common-gray-box clearfix function-right">
+
+            <h3 class="heading"><vc-label vc-property="admin.systemuser.user.lockHeadng"></vc-label></h3>
+
+            <div class="content">
+                <span>state: <span class="locked">{{lockedMsg}}</span></span>
+                <vc-text-area vc-require=true ng-model="systemuseruserCnrtllr.updateuser.lockReason" ></vc-text-area>
+                <vc-tool-tip
+                    tool-tip-lable      = "tooltip.overviewUser.masterData.lockReason.lable"
+                    title-description   = "tooltip.overviewUser.masterData.lockReason.titledescription"
+                    field-uid           = "tooltip.overviewUser.masterData.lockReason"
+                    title-mandatory     = "true">
+                </vc-tool-tip>
+            </div>
+        </div>
+
+  </div>
+</div>
+
+<vc-bottom-tool-tip vc-content="bottomToolTip.usermasterdata"></vc-bottom-tool-tip>
+ </form>
+   
+</div>

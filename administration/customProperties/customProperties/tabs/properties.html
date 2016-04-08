@@ -1,0 +1,120 @@
+<!-- functional area for custom properties -->
+
+<div  ng-if="!createProp">
+  <div class="function-area" >
+    <ul>
+      <li><a ng-click="customProperties.editProperty()"><img height="16" src="assets/images/save-icon.png">
+        <vc-label vc-property="properties.button.save"></vc-label>
+        </a></li>
+        <li><a ng-click="customProperties.deleteProperty()"><img height="16" src="/assets/images/fav-delet-icon.png">
+        <vc-label vc-property="properties.button.delete"></vc-label>
+        </a></li>
+      <li><a ng-click="customProperties.createProperty()"><img height="16" src="assets/images/add-green-icon.png">
+        <vc-label vc-property="properties.button.create"></vc-label>
+        </a></li>
+    </ul>
+    <ul class="pull-right function-right">
+      <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+    </ul>
+  </div>
+  <div id="FormErrors" class="errorPopupBox" ng-if="customProperties.notSelected">
+    <p class="error-msg">Please select the properties to save.</p>
+  </div>
+    <div id="FormErrors" class="errorPopupBox" ng-if="customProperties.notSelectedForDelete">
+    <p class="error-msg">Please select the properties you wish to delete.</p>
+  </div>
+    <p class="blankSpace">&nbsp; </p>
+  <div class="headingBox">
+    <h3 class="heading">CURRENTLY DEFINED PROPERTIES</h3>
+  </div>
+  <p class="blankSpace">&nbsp; </p>
+  <div class="row">
+    <div class="col-sm-12">
+      <vc-properties-grid></vc-properties-grid>
+    </div>
+  </div>
+</div>
+<div ng-if="createProp">
+  <div class="function-area">
+    <ul>
+      <li><a ng-click="submitted = true;(myForm.$valid) ? customProperties.saveProperty() : ''"><img height="20" src="assets/images/save-icon.png">
+        <vc-label vc-property="customproperties.customproperties.button.save"></vc-label>
+        </a></li>
+      <li><a ng-click="customProperties.backToProperties()"><img height="20" src="assets/images/arrow-back-16.png">
+        <vc-label vc-property="customproperties.customproperties.button.back"></vc-label>
+        </a></li>
+    </ul>
+    <ul class="pull-right function-right">
+      <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+    </ul>
+  </div>
+  <form name="myForm" novalidate">
+    <div class="gridWraper" ng-class="{true: 'error'}[submitted && myForm.$invalid]">
+        <div id="FormErrors" class="errorPopupBox" ng-if="customProperties.listErrorLess || customProperties.listErrorMore" style="margin-bottom:15px;">
+        <p class="error-msg">The following errors have occured:</p>
+        <ul>
+          <li ng-if="customProperties.listErrorMore">A Maximum Number Of One 
+              Exclamation Marks Inside The Definition-String.</li>
+        </ul>
+        <ul>
+          <li ng-if="customProperties.listErrorLess">One Exclamation Marks 
+              Inside The Definition-String Is Required.</li>
+        </ul>
+      </div>
+      <div class="col-md-6 col-sm-12 ltRtPading">
+        <div class="headingBox">
+          <h3 class="heading">CREATE NEW PROPERTY</h3>
+        </div>
+        <p class="blankSpace">&nbsp; </p>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="dialogbox-table-bg">
+          <tr>
+            <th>Property data </th>
+          </tr>
+          <tr>
+            <td><vc-text-box-bottom vc-require="true" vc-property="properties.field.name" ng-model="customProperties.createPropertyData.designator"></vc-text-box-bottom>
+          </tr>
+          <tr>
+            <td><vc-select-box-bottom vc-property="properties.field.category" vc-list-content="customProperties.categoryList" vc-list-display-key="categoryId" vc-list-display-var="designator" ng-model="customProperties.createPropertyData.cId"  ></vc-select-box-bottom></td>
+          </tr>
+          <tr>
+            <td><vc-select-box-bottom vc-property="properties.field.type" vc-list-content="customProperties.dataTypeList" vc-list-display-key="index" vc-list-display-var="displayName" vc-getdata="getDefaultvalueById(data)" ng-model="customProperties.createPropertyData.dataType.index" ></vc-select-box-bottom></td>
+          </tr>
+          <tr>
+            <td><span style="display:table;">
+              <input name="" type="checkbox" value="" ng-if="customProperties.isCheckbox" ng-model="customProperties.createPropertyData.defaultValue">
+              <input name="" type="text" value="" ng-if="customProperties.isTextBox" ng-model="customProperties.createPropertyData.defaultValue">
+              <input name="" type="number" step="0.01" value="" ng-if="customProperties.isNumber" ng-model="customProperties.createPropertyData.defaultValue">
+              <textarea cols="40" rows="5" ng-if="customProperties.isTextArea" ng-model="customProperties.createPropertyData.defaultValue"></textarea>
+              <vc-text-box-bottom vc-require="true" ng-if="customProperties.isTable" ng-model="customProperties.createPropertyData.defaultValue"></vc-text-box-bottom>
+              </span>
+              <!--
+                <span class="pull-left" style=" padding-left:0px" ng-if="customProperties.isTextArea || customProperties.isTextBox || customProperties.isCheckbox || customProperties.isNumber" >Default value</span>
+              -->
+
+              <vc-tool-tip
+              tool-tip-lable      = "tooltip.customProperties.properties.propertiData.DefaultValue.lable"
+              title-description   = "tooltip.customProperties.properties.propertiData.DefaultValue.titledescription"
+              field-uid           = "tooltip.customProperties.properties.propertiData.DefaultValue"
+              ng-if               = "customProperties.isTextArea
+                                  || customProperties.isTextBox
+                                  || customProperties.isCheckbox
+                                  || customProperties.isNumber"
+              >
+              </vc-tool-tip>
+              <vc-tool-tip
+              tool-tip-lable      = "tooltip.customProperties.properties.propertiData.DefaultValue.table"
+              title-description   = "tooltip.customProperties.properties.propertiData.DefaultValue.titledescription"
+              field-uid           = "tooltip.customProperties.properties.propertiData.DefaultValue"
+              ng-if               = "customProperties.isTable"
+              >
+              </vc-tool-tip>
+
+            </td>
+              </td>
+          </tr>
+        </table>
+      </div>
+      <p class="blankSpace">&nbsp; </p>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,19 @@
+<!--<div id="Overview" class="tab-pane fade in active">-->
+<div class="function-area">
+    <ul>
+        <li><a ng-click="addSysUser()"><img height="20" src="assets/images/add-user-icon.png">
+            <vc-label vc-property="admin.systemuser.user.AddLabel">
+        </a></li>
+
+    </ul>
+    <ul class="pull-right function-right">
+
+        <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a
+            ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a></li>
+
+    </ul>
+</div>
+<vc-admin-sys-user-grid></vc-admin-sys-user-grid>
+
+ <vc-bottom-tool-tip vc-content="bottomToolTip.displayusers"></vc-bottom-tool-tip>
+

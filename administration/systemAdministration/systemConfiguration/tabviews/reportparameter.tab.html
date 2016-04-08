@@ -1,0 +1,93 @@
+<div class="function-area" >
+  <ul class="pull-right function-right">
+    <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22"
+                                                                                   ng-src="{{act.icon}}"></a></li>
+  </ul>
+</div>
+ <div class="col-md-6 col-sm-12 ltRtPading">
+
+ <div class="common-gray-box clearfix ">
+					<h3 class="heading">Select Mandator</h3>
+					<div class="content">
+            <vc-tool-tip 
+            tool-tip-lable      = "tooltip.systemConfiguration.reportParameter.mandator.lable" 
+            title-description   = "tooltip.systemConfiguration.reportParameter.mandator.titledescription"
+            field-uid           = "tooltip.systemConfiguration.reportParameter.mandator">
+            </vc-tool-tip>
+            <vc-select-box vc-disabled="true" ng-model="mandator" ></vc-select-box>
+          </div>
+                    </div>
+
+
+
+
+<div class="gridWraper">
+  <div class="common-gray-box clearfix">
+    <h3 class="heading">Header rows for the building brochure</h3>
+    <div class="content">
+      <table width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+        <thead>
+          <tr>
+            <th scope="col" width="40%">Value</th>
+            <th scope="col" width="60%">property description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="col"><input type="text" class="comTextbox"></td>
+            <td>The first row in the building brochure</td>
+          </tr>
+          <tr>
+            <td scope="col"><input type="text" class="comTextbox"></td>
+            <td>The second row in the building brochure</td>
+          </tr>
+          <tr>
+            <td scope="col"><input type="text" class="comTextbox"></td>
+            <td>The third row in the building brochure</td>
+          </tr>
+          <tr>
+            <td scope="col"><input type="text" class="comTextbox"></td>
+            <td>Name of the image file of the logo for the building Expose </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="common-gray-box clearfix">
+    <h3 class="heading">Headers for the maintenance plan</h3>
+    <div class="content">
+      <table width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+        <thead>
+          <tr>
+            <th scope="col" width="40%">Value</th>
+            <th scope="col" width="60%">property description</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td scope="col"><input type="text" class="comTextbox"></td>
+            <td>The first header of the maintenance plan</td>
+          </tr>
+          <tr>
+            <td scope="col"><input type="text" class="comTextbox"></td>
+            <td>The second header for the maintenance plan</td>
+          </tr>
+          <tr>
+            <td scope="col"><input type="text" class="comTextbox"></td>
+            <td>The third header for the maintenance plan</td>
+          </tr>
+          <tr>
+            <td scope="col"><select class="form-control">
+                <option selected="selected" value="0"> - defined no document -</option>
+              </select></td>
+            <td>The logo for the table header.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>

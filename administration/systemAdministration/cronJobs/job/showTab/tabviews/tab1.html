@@ -1,0 +1,49 @@
+<!--<div id="Overview" class="tab-pane fade in active">-->
+<div class="function-area">
+    <ul>
+        <li><a ><img height="16" src="assets/images/save-icon.png"> <vc-label vc-property="cronjobs.job.save"></vc-label></a></li>
+        <li><a ><img height="16" src="assets/images/fav-delet-icon.png"> <vc-label vc-property="cronjobs.job.delete"></vc-label></a></li>
+        <li><a ><img height="16" src="assets/images/add-user-icon.png"> <vc-label vc-property="cronjobs.job.addtrigger"></vc-label></a></li>
+        <li><a ><img height="16" src="assets/images/del-icon_1.png"> <vc-label vc-property="cronjobs.job.removetrigger"></vc-label></a></li>
+        <li><a ><img height="16" src="assets/images/green-edit-icon.png"> <vc-label vc-property="cronjobs.job.run"></vc-label></a></li>
+        <li><a ng-click="cronjobsCnrtllr.back()"><img height="16" src="assets/images/arrow-back-16.png"> <vc-label vc-property="cronjobs.job.back"></vc-label> </a></li>
+
+    </ul>
+    <ul class="pull-right function-right">
+        <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="16" ng-src="{{act.icon}}"></a></li>
+    </ul>
+</div>
+<div class="col-70">
+
+     <div class="common-gray-box clearfix">
+        <h3 class="heading"><vc-label vc-property="cronjobs.masterdata"></vc-label></h3>
+        <div class="content">
+      <div class="gridWraper">
+                   <div class="colBox-48"> <vc-text-box-bottom vc-require="true" vc-property="cronjobs.grp" ng-model="cronjobsCnrtllr.updateuser.designator"></vc-text-box-bottom></div>
+                   <div class="colBox-48" style="margin-left:4%;"><vc-text-box-bottom vc-require="true" vc-property="cronjobs.nme" ng-model="cronjobsCnrtllr.updateuser.designator"></vc-text-box-bottom></div></div>
+
+             <div class="rowBox-100">
+                <vc-text-area vc-require=false vc-property="cronjobs.descp" ng-model="cronjobsCnrtllr.updateuser.description"></vc-text-area></div>
+
+             <div class="rowBox-100">
+
+
+                <vc-text-box-bottom vc-require="true" vc-property="cronjobs.jobCat" ng-model="cronjobsCnrtllr.updateuser.designator"></vc-text-box-bottom></div>
+
+        </div>
+    </div>
+
+
+</div>
+<p class="blankSpace">&nbsp;</p>
+<div class="headingBox">
+                   <h3 class="heading"><vc-label vc-property="cronjobs.define"></vc-label></h3>
+                 </div>
+
+
+       <p class="blankSpace">&nbsp; </p>
+        <vc-triggers-grid></vc-triggers-grid>
+
+
+
+

@@ -1,0 +1,45 @@
+<!--<div id="Overview" class="tab-pane fade in active">-->
+<div  id="CatMgrCrossTbl" ng-controller="CatMgrCrossTbl">
+    <div class="function-area">
+<!--        <ul>
+            <li><a > Add </a></li>
+
+        </ul>-->
+        <ul class="pull-right function-right">
+            <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom">
+              <a ng-click="onToolClick($event, act)"> 
+                <img height="22" ng-src="{{act.icon}}">
+              </a>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+    <div class="col-md-6 col-sm-12">
+                    <div class="common-gray-box clearfix">
+                        <h3 class="heading">Cross tables</h3>
+                        <div class="content">
+
+                        <vc-cat-mgr-cross-tbl></vc-cat-mgr-cross-tbl>
+                        <vc-tool-tip 
+                        tool-tip-lable      = "tooltip.catalogmanaager.crosstable.crosstable.lable" 
+                        title-description   = "tooltip.catalogmanaager.crosstable.crosstable.titledescription"
+                        field-uid           = "tooltip.catalogmanaager.crosstable.crosstable">
+                        </vc-tool-tip>
+                        <!--
+                            <select class="form-control form-group clearfix">
+                                <option value="0" selected="selected">001 - EBCsoft GmbH NL Leipzig</option>
+                                <option value="1">004 - Hochschule für Energie</option>
+                            </select>
+                        -->
+                            <a style="margin-top: 10px;" class="btn btn-primary" ng-click="getTable();" href="javascript:void(0)">Load Data</a>
+                            <a style="margin-top: 10px;" class="btn btn-primary" ng-click="setTableSwitch();" href="javascript:void(0)">Change &#47; Exchange Tables</a>
+                        </div>
+                    </div>
+                    </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+    <vc-cross-tables-grid></vc-cross-tables-grid>
+</div>
+    </div>
+</div>

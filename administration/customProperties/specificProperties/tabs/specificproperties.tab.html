@@ -1,0 +1,44 @@
+
+<div class="function-area" >
+  <ul>
+      <li><a ng-click="specificProperties.saveProperties()"><img height="16" src="assets/images/save-icon.png"> <vc-label vc-property="specificprop.properties.save"></vc-label> </a></li>
+      <li><a ng-click="specificProperties.deleteProperties()"><img height="16" src="/assets/images/del-icon.png"> <vc-label vc-property="specificprop.properties.delete"></vc-label></a></li>
+      <li><a ng-click="specificProperties.create()"><img height="16" src="assets/images/create-icon.png"> <vc-label vc-property="specificprop.properties.createProp"></vc-label></a></li>
+      <li><a ng-click="specificProperties.createSection()"><img height="16" src="assets/images/create-icon.png"> <vc-label vc-property="specificprop.properties.createSectn"></vc-label></a></li>
+    <li><a ng-click="specificProperties.mangeCategories()"><img height="16" src="assets/images/green-edit-icon.png"> <vc-label vc-property="specificprop.properties.manage"></vc-label> </a></li>
+
+  </ul>
+  <ul class="pull-right function-right">
+    <li ng-repeat="act in defaultActions"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a></li>
+  </ul>
+</div>
+ <div id="FormErrors" class="errorPopupBox" ng-if="specificProperties.notSelectedForSave">
+    <p class="error-msg">Please select the properties to save.</p>
+  </div>
+    <div id="FormErrors" class="errorPopupBox" ng-if="specificProperties.notSelectedForDelete">
+    <p class="error-msg">Please select the properties you wish to delete.</p>
+  </div>
+
+
+
+<div class="col-md-6 col-sm-12 ltRtPading">
+  <div class="common-gray-box clearfix">
+    <h3 class="heading"> Display Options </h3>
+    <div class="content">
+      <select class="form-control form-group clearfix" ng-options="opt.index as opt.displayName for opt in specificProperties.options" ng-model="specificProperties.properties_index" ng-change="specificProperties.getPropertiesIndex(specificProperties.properties_index)">
+      </select>
+        <p>Feature Table</p>
+        <label><input type="checkbox" ng-model="is_edit_only" ng-change="specificProperties.checkboxClick(specificProperties.is_edit_only)"/> Show Only Editable Properties</label>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-12 col-sm-12 ltRtPading">
+
+   <div class="headingBox">
+  <h3 class="heading">CURRENTLY SCALE PROPERTIES</h3>
+</div>
+    <p class="blankSpace">&nbsp; </p>
+<vc-specific-properties-grid></vc-specific-properties-grid>
+</div>
+

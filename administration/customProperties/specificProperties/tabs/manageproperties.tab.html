@@ -1,0 +1,43 @@
+        <div class="function-area" ng-init="getCategory()">
+          <ul>
+            <li><a ng-click="submitted = true;(myForm.$valid) ? specificSection.saveCategory() : ''"><img height="16" src="assets/images/save-icon.png">
+              <vc-label vc-property="specificprop.properties.save"></vc-label>
+              </a></li>
+            <li><a ng-click="specificSection.deleteCategory()"> <img height="16" src="/assets/images/del-icon_1.png">
+              <vc-label vc-property="specificprop.properties.delete"></vc-label>
+              </a></li>
+            <li><a ng-click="specificSection.back()"><img height="16" src="assets/images/arrow-back-16.png">
+              <vc-label vc-property="specificprop.properties.back"></vc-label>
+              </a></li>
+          </ul>
+          <ul class="pull-right function-right">
+            <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+          </ul>
+        </div>
+        <form name="myForm" novalidate>
+          <div class="gridWraper" ng-class="{true: 'error'}[submitted && myForm.req.$invalid]">
+          <div class="col-md-6 col-sm-12 ltRtPading">
+              <div class="headingBox">
+                <h3 class="heading">Currently applied headings</h3>
+              </div>
+              <p class="blankSpace">&nbsp; </p>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="dialogbox-table-bg">
+                <tr>
+                  <th >&nbsp; </th>
+                  <th ><vc-label vc-property="specificprop.grid.shortness"></vc-label></th>
+                  <th ><vc-label vc-property="specificprop.grid.identifiers"></vc-label></th>
+                </tr>
+                <tr ng-repeat="data in specificSection.categoryArr">
+                  <td><input type="checkbox" ng-model="data.active" ng-change="getCheckedRow($index,data,data.active)" /></td>
+                  <td><vc-text-box-bottom ng-model="data.token" ng-maxlength="2" ></vc-text-box-bottom></td>
+                  <td><vc-text-box-bottom ng-model="data.designator"></vc-text-box-bottom></td>
+                </tr>
+                
+                <!--                <tr>
+                                            <td><input name=req type="text" class="comTextbox" ng-model="specificSection.propertyData.order">
+                                                <span class="pull-left"><vc-label vc-property="specificprop.grid.order"></vc-label></span></td>
+                                        </tr>-->
+              </table>
+            </div>
+          </div>
+        </form>

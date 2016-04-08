@@ -1,0 +1,11 @@
+<div class="function-area">
+    <ul>
+    </ul>
+    <ul class="pull-right function-right">
+        <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22"
+                                                                                   ng-src="{{act.icon}}"></a></li>
+    </ul>
+</div>
+<vc-sysuser-heirarchy-right-tab></vc-sysuser-heirarchy-right-tab>
+
+<vc-bottom-tool-tip vc-content="bottomToolTip.Datarights"></vc-bottom-tool-tip>

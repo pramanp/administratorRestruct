@@ -1,0 +1,86 @@
+<div class="function-area" ng-init="getMandatorData()">
+    <ul>
+        <li><a ng-click="submitted = true;(myForm.$valid)?onUpdateMandator():''"> <img height="16" src="/assets/images/green-add-icon.png"> Save </a></li>
+        <li><a ng-click="onDeleteMandator()"> <img height="16" src="/assets/images/del-icon_1.png"> Delete Mandator</a></li>
+        <li><a ng-click="onLinkMandator()"> <img height="16" src="/assets/images/link-user-icon.png"> Link Mandator</a></li>
+        <li class="labelCont" ><a ng-click="backToRoot()"> <img height="17" src="/assets/images/arrow-back-16.png"><vc-label vc-property="general.back"></vc-label></a></li>
+    </ul>
+    <ul class="pull-right function-right">
+        <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+    </ul>
+</div>
+
+<div class="rt-content-box">
+    <form name="myForm" novalidate>
+          <!--<div class="confirm-msgbox">Access to administrator group data is only read only.</div>-->
+          <div class="col-md-6 col-sm-12 ltRtPading">
+            <div class="gridWraper" ng-class="{true: 'error'}[submitted && myForm.$invalid]">
+
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="dialogbox-table-bg">
+                    <tr>
+                        <th>Operator group data </th>
+                    </tr>
+                    <tr>
+                    <td ng-if="mandatorCntrller.showCstNameList">
+                        <vc-select-box-bottom  vc-list-content="mandatorCntrller.customerNameList" vc-list-display-key="id" vc-list-display-var="designator" vc-getdata="getCustomerName(data)" ng-model="mandatorCntrller.customerName">
+                        </vc-select-box-bottom>
+                        <vc-tool-tip 
+                            tool-tip-lable      = "tooltip.overviewMandator.masterData.customerName.lable" 
+                            title-description   = "tooltip.overviewMandator.masterData.customerName.titledescription"
+                            field-uid           = "tooltip.overviewMandator.masterData.customerName"
+                            title-mandatory     = "true" >
+                        </vc-tool-tip>
+                </td>
+                </tr>
+                    <tr>
+                        <td>
+                            <!--<vc-select-box-bottom vc-property="admin.mandators.grid.designator" vc-list-content="mandatorCntrller.mandant" vc-list-display-key="dbId" vc-list-display-var="designator" vc-getdata="getUserGroupBymId(data)" ng-model="mandatorCntrller.selectedMandator"></vc-select-box-bottom>-->
+                        <vc-text-box-bottom vc-require="true" ng-model="mandatorCntrller.updateuser.designator"></vc-text-box-bottom>
+
+                        <vc-tool-tip 
+                            tool-tip-lable      = "tooltip.overviewMandator.masterData.designator.lable" 
+                            title-description   = "tooltip.overviewMandator.masterData.designator.titledescription"
+                            field-uid           = "tooltip.overviewMandator.masterData.designator"
+                            title-mandatory     = "true" >
+                        </vc-tool-tip>
+
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <vc-text-box-bottom  ng-model="mandatorCntrller.updateuser.token" ng-disabled="true"></vc-text-box-bottom>
+                            <vc-tool-tip 
+                                tool-tip-lable      = "tooltip.overviewMandator.masterData.token.lable" 
+                                title-description   = "tooltip.overviewMandator.masterData.token.titledescription"
+                                field-uid           = "tooltip.overviewMandator.masterData.token"
+                                title-mandatory     = "true" >
+                            </vc-tool-tip>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <vc-text-area ng-model="mandatorCntrller.updateuser.description"></vc-text-area>
+
+                            <vc-tool-tip 
+                                tool-tip-lable      = "tooltip.overviewMandator.masterData.description.lable" 
+                                title-description   = "tooltip.overviewMandator.masterData.description.titledescription"
+                                field-uid           = "tooltip.overviewMandator.masterData.description">
+                            </vc-tool-tip>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <vc-text-area ng-model="mandatorCntrller.updateuser.notes"></vc-text-area>
+                            <vc-tool-tip 
+                                tool-tip-lable      = "tooltip.overviewMandator.masterData.note.lable" 
+                                title-description   = "tooltip.overviewMandator.masterData.note.titledescription"
+                                field-uid           = "tooltip.overviewMandator.masterData.note">
+                            </vc-tool-tip>
+                        </td>  
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>

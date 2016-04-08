@@ -1,0 +1,32 @@
+<!--<div id="Overview" class="tab-pane fade in active">-->
+<div class="function-area">
+    <ul>
+        <li><a ><img height="20" src="assets/images/add-user-icon.png"> Add User	</a></li>
+
+    </ul>
+
+     <ul class="pull-right function-right">
+        <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22"
+                                                                                   ng-src="{{act.icon}}"></a></li>
+
+    </ul>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<div class="common-gray-box clearfix">
+			<h3 class="heading">Systemtables</h3>
+			<div class="content">
+				<select class="form-control form-group clearfix">
+					<option value="0" selected="selected">001 - EBCsoft GmbH NL Leipzig</option>
+					<option value="1">004 - Hochschule für Energie</option>
+				</select>
+				<a class="btn btn-primary" href="#">Load</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<vc-system-tables-grid></vc-system-tables-grid>
+	</div>
+</div>

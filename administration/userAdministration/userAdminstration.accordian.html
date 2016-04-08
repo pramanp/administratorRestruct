@@ -1,0 +1,30 @@
+<div class="panel-body">
+    <div class="tree-search-box">
+        <div class="search-area-left">
+            <input type="text" class="tree-textbox">
+            <a value="" class="search-btn"></a>
+        </div>
+
+        <div class="menu-drop-left">
+            <select name="">
+                <option> 1</option>
+            </select>
+        </div>
+        <div class="tree-icons-right">
+            <ul>
+                <li><a ng-click="collapseTree()"><img src="assets/images/icon-expand.gif" alt="Expand Tree" title="Expand Tree"></a></li>
+                <li><a ng-click="expandTree()"><img src="assets/images/icon-collapse.gif" alt="Collapse Tree" title="Collapse Tree"></a></li>
+                <li><!--<a ng-click="clipboard('cut')">--><img src="assets/images/sizear-icon.png" alt="Cut" title="Cut"><!--</a>--></li>
+                <li><!--<a ng-click="clipboard('paste')">--><img src="assets/images/left-save-icon.png" alt="Copy" title="Copy"><!--</a>--></li>
+            </ul>
+        </div>
+
+
+    </div>
+
+    <div class="tree-menu left-Tree tree-min-height" id="tree-menu">
+            <vc-admin-tree height="400px"></vc-admin-tree>
+    </div>
+
+
+</div>

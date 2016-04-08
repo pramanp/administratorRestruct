@@ -1,0 +1,100 @@
+<!--<div id="Overview" class="tab-pane fade in active">-->
+<div class="function-area" >
+    <ul>
+        <li><a ng-click="saveOperatorData()"><img height="20" src="/assets/images/green-add-icon.png"> <vc-label vc-property="admin.mandators.mandator.save"></a></li>
+
+    </ul>
+    <ul class="pull-right function-right">
+        <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22"
+                                                                                                                                                   ng-src="{{act.icon}}"></a></li>
+    </ul>
+</div>
+
+<div class="errorPopupBox" ng-if="status == false">
+    <p class="error-msg">{{error_message}}</p>
+</div>
+<!--</div>-->
+<div class="gridWraper">
+    <div class="col-md-6 col-sm-12 ltRtPading">
+
+
+<div class="common-gray-box clearfix">
+					<h3 class="heading"><vc-label vc-property="sysadmin.license.field.customer"></vc-label></h3>
+					<div class="content"><vc-select-box-bottom vc-list-content="customerNameList" vc-list-display-key="id" vc-list-display-var="designator" vc-getdata="getCustomerName(data)" ng-model="customerName">
+            </vc-select-box-bottom></div>
+                    </div>
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="dialogbox-table-bg">
+            <tr>
+
+                <th colspan="2" >License parameters </th>
+            </tr>
+            <tr>
+                <td><strong><vc-label vc-property="sysadmin.license.field.maxMandator"></vc-label></strong>  </td>
+                <td><span ng-bind="maxMandator"></span></td>
+            </tr>
+            <tr>
+                <td><strong><vc-label vc-property="sysadmin.license.field.maxOperatorValue"></vc-label></strong>  </td>
+                <td><span ng-bind="maxOperatorValue"></span></td>
+            </tr>
+            <tr>
+                <td><strong><vc-label vc-property="sysadmin.license.field.maxConcurrentOperators"></vc-label></strong>  </td>
+                <td><span ng-bind="maxConcurrentOperators"></span></td>
+            </tr>
+            <tr>
+                <td><strong><vc-label vc-property="sysadmin.license.field.maxVitricadOperators"></vc-label></strong>  </td>
+                <td><span ng-bind="maxVitricadOperators"></span></td>
+            </tr>
+        </table>
+       
+    </div>
+    
+     <p class="blankSpace">&nbsp; </p>
+        <div class="seekbarHolder">
+            <vc-mandators-operator-grid></vc-mandators-operator-grid>
+<!--            <table width="100%" border="1" cellspacing="0" cellpadding="5">
+                <tr>
+                    <th scope="col" width="15%">Mandator</th>
+                    <th scope="col" width="35%">Maximum oprator accounts</th>
+                    <th scope="col" width="15%">Maximum concurrent oprators </th>
+                    <th scope="col" width="35%">Maximum concurrent VITRICODE oprators</th>
+                </tr>
+                <tr ng-repeat="mandatorRS in mndatrCntrller.mandatorRSsList">
+                    <td>{{mandatorRS.mandtatorName}}</td>
+                    <td> 
+                        <div ng-show="mndatrCntrller.maxOperatorValue == -1">
+                            <span style="float:left">Unlimited</span>
+                        </div> 
+                        <div ng-hide="mndatrCntrller.maxOperatorValue == -1">
+                            <a><img height="20" src="/assets/images/add-green-icon.png">
+                            <span id="val" style="float:left">{{mandatorRS.maxOperatorValue}}</span> /{{mndatrCntrller.maxOperatorValue}} 
+                            <a><img height="20" src="/assets/images/del-icon.png">
+                        </div>
+                        
+                    </td>
+                    <td>
+                        <div ng-show="mndatrCntrller.maxConcurrentOperators == -1">
+                            <span style="float:left">Unlimited</span>
+                        </div> 
+                        <div ng-hide="mndatrCntrller.maxConcurrentOperators == -1">
+                            <a ng-click="mndatrCntrller.changeOperatorValue('plus')"><img height="20" src="/assets/images/add-green-icon.png">
+                            <span id="val" style="float:left" ng-model="mndatrCntrller.maxConcurrentOperator">{{mandatorRS.maxConcurrentOperators}}</span> /{{mndatrCntrller.maxConcurrentOperators}} 
+                            <a ng-click="mndatrCntrller.changeOperatorValue('minus')"><img height="20" src="/assets/images/del-icon.png">
+                        </div>
+                    </td>
+                    <td> 
+                        <div ng-show="mndatrCntrller.maxVitricadOperators == -1">
+                            <span style="float:left">Unlimited</span>
+                        </div> 
+                        <div ng-hide="mndatrCntrller.maxVitricadOperators == -1">
+                            <a><img height="20" src="/assets/images/add-green-icon.png">
+                            <span id="val1" style="float:left">{{mandatorRS.maxVitricadOperators}}</span> /{{mndatrCntrller.maxVitricadOperators}}
+                            <a><img height="20" src="/assets/images/del-icon.png">
+                        </div>
+                    </td>
+                </tr>
+            </table>-->
+        </div>
+    
+
+</div>

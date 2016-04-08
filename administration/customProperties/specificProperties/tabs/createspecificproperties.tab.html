@@ -1,0 +1,57 @@
+      <div class="function-area" >
+        <ul>
+          <li><a ng-click="submitted = true;(myForm.$valid) ? specificProperties.saveProperty() : ''"><img height="16" src="assets/images/save-icon.png">
+            <vc-label vc-property="specificprop.properties.save"></vc-label>
+            </a></li>
+          <li><a ng-click="specificProperties.back()"><img height="16" src="assets/images/arrow-back-16.png">
+            <vc-label vc-property="specificprop.properties.back"></vc-label>
+            </a></li>
+        </ul>
+        <ul class="pull-right function-right">
+          <li ng-repeat="act in defaultActions" uib-tooltip="{{act.tooltp}}" tooltip-placement="bottom"><a ng-click="onToolClick($event, act)"> <img height="22" ng-src="{{act.icon}}"></a> </li>
+        </ul>
+      </div>
+      <form name="myForm" novalidate>
+        <div class="gridWraper" ng-class="{true: 'error'}[submitted && myForm.req.$invalid]">
+          <div class="col-md-6 col-sm-12 ltRtPading">
+            <div class="headingBox">
+              <h3 class="heading"><vc-label vc-property="specificprop.properties.h1"></vc-label></h3>
+            </div>
+            <p class="blankSpace">&nbsp; </p>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="dialogbox-table-bg">
+              <tr>
+                <th><vc-label vc-property="specificprop.properties.h2"></vc-label></th>
+              </tr>
+              <tr>
+                <td class="labelCont"><input name=req type="text" class="comTextbox" required ng-model="specificProperties.propertyData.designator">
+                  <span class="pull-left">
+                  <vc-label vc-property="specificprop.identifier"></vc-label>
+                  </span></td>
+              </tr>
+              <tr>
+                <td><vc-select-box1 vc-property="specificprop.shortcut" vc-list-content="tokenList" vc-list-display-key="index" vc-list-display-var="displayName" vc-getdata="getTokenByIndex(data)" ng-model="selectedToken"></vc-select-box1>
+                  
+                  <!--<span class="pull-left">Shortcut*</span>--></td>
+              </tr>
+              <tr>
+                <td><vc-select-box-bottom vc-property="specificprop.datatype" vc-list-content="dataTypeList" vc-list-display-key="index" vc-list-display-var="displayName" vc-getdata="getDatatypeByIndex(data)" ng-model="specificProperties.selectedDatatype"></vc-select-box-bottom></td>
+              </tr>
+              <tr>
+                <td><vc-select-box-bottom vc-property="specificprop.category" vc-list-content="categoryList" vc-list-display-key="index" vc-list-display-var="displayName" vc-getdata="getCatByIndex(data)" ng-model="specificProperties.selectedCat"></vc-select-box-bottom></td>
+              </tr>
+              <tr>
+                <td class="labelCont"><input name=req type="text" class="comTextbox" ng-model="specificProperties.propertyData.description">
+                  <span class="pull-left">
+                  <vc-label vc-property="specificprop.grid.description"></vc-label>
+                  </span></td>
+              </tr>
+              <tr>
+                <td class="labelCont"><input name=req type="text" class="comTextbox" ng-model="specificProperties.propertyData.order">
+                  <span class="pull-left">
+                  <vc-label vc-property="specificprop.grid.order"></vc-label>
+                  </span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </form>

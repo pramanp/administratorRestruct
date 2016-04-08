@@ -1,0 +1,37 @@
+<!--<div id="Overview" class="tab-pane fade in active">-->
+<div class="function-area">
+    <ul>
+        <li><a ng-click="showLink = true"><img height="16" src="assets/images/link-user-icon.png"> Link</a></li>
+
+    </ul>
+    <!--    <ul class="pull-right function-right">
+            <li ng-repeat="act in defaultActions"><a ng-click="onToolClick($event, act)"> <img height="22"
+                                                                                       ng-src="{{act.icon}}"></a></li>
+        </ul>-->
+</div>
+<div class="col-md-12 col-sm-12 ltRtPading" style="position:relative">
+    <vc-link-mandator-grid></vc-link-mandator-grid>
+    <div class="col-sm-6 pad-right-1 grid-popup" ng-show="showLink">
+
+        <div class="common-gray-box clearfix">
+            <h3 class="heading">
+                <vc-label vc-property="admin.usergroups.linkmandator.specmandator"></vc-label>
+            </h3>
+
+            <div class="content">
+
+                <input class="btn-primary" type="button" value="Abort" ng-click="showLink = false"/>
+                <input class="btn-primary" type="button" value="Save" ng-click="saveLink()"/>
+
+                <p class="blankSpace">&nbsp; </p>
+                <vc-select-box-bottom vc-property="admin.usergroups.linkmandator.mandator" vc-list-content="linkmandatorCntrller.mandant" vc-list-display-key="dbId" vc-list-display-var="designator" vc-getdata="getmId(data)" ng-model="linkmandatorCntrller.selectedMandator"></vc-select-box-bottom>
+
+                <p class="blankSpace">&nbsp; </p>
+                <vc-select-box-bottom vc-property="admin.usergroups.linkmandator.group" vc-list-content="usergroup" vc-list-display-key="id" vc-list-display-var="designator" vc-getdata="getUserGroupId(data)" ng-model="selectedUserGroup"></vc-select-box-bottom>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!--</div>-->

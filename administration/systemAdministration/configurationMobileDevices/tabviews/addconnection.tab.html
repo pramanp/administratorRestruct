@@ -1,0 +1,133 @@
+<!--<div id="Overview" class="tab-pane fade in active">-->
+<div class="function-area" >
+    <ul>
+        <li><a ng-click="submitted = true;(myForm.$valid)?mobileDevice.save():''"><img height="20" src="assets/images/save-icon.png"> Save	</a></li>
+        <li><a ng-click="mobileDevice.delete()" ng-if="mobileDevice.showDelete"><img height="20" src="assets/images/del-icon_1.png"> Remove	</a></li>
+        <li><a ng-click="mobileDevice.back()"><img height="20" src="assets/images/arrow-back-16.png"> Back	</a></li>
+
+    </ul>
+    <ul class="pull-right function-right">
+
+        <li><a >
+                <img height="22" src="assets/images/icon-bookmark.png"></a>
+        </li>
+    </ul>
+</div>
+<form name="myForm" novalidate">
+<div class="gridWraper" ng-class="{true: 'error'}[submitted && myForm.$invalid]">
+    
+                  <div class="col-md-6 col-sm-12 ltRtPading">
+                  <div class="table-wraper">
+<h3 class="heading">Add Conection To Mobile Device</h3>
+				  <table width="96%" cellspacing="0" cellpadding="0" border="0" align="left" class="dialogbox-table-bg">
+                    <tbody><tr>
+                      <th colspan="2">Master Data </th>
+					  </tr>
+	<tr>
+            
+   <td width="50%">
+    <select name="" class="form-control" ng-options="opt for opt in mobileDevice.options" vc-require="true" ng-model="mobileDevice.addDevice.connectionTpye">
+ </select> 
+    <!--
+    <span class="pull-left">Connection Type *</span>  
+    -->
+    <vc-tool-tip 
+        tool-tip-lable      = "tooltip.configurationMobileDevice.connectionConfiguration.connectionType.lable" 
+        title-description   = "tooltip.configurationMobileDevice.connectionConfiguration.connectionType.titledescription"
+        field-uid           = "tooltip.configurationMobileDevice.connectionConfiguration.connectionType"
+        title-mandatory     = "true">
+    </vc-tool-tip>
+  </td>
+    <td width="50%"><input type="text" class="comTextbox" vc-require="true" ng-model="mobileDevice.addDevice.designator" required> 
+      <!--
+      <span class="pull-left"> Name*</span>
+      -->
+      <vc-tool-tip 
+      tool-tip-lable      = "tooltip.configurationMobileDevice.connectionConfiguration.name.lable" 
+      title-description   = "tooltip.configurationMobileDevice.connectionConfiguration.name.titledescription"
+      field-uid           = "tooltip.configurationMobileDevice.connectionConfiguration.name"
+      title-mandatory     = "true">
+      </vc-tool-tip>
+    </td>  
+    </tr>
+    
+    <tr>
+   <td><input type="text" class="comTextbox" ng-model="mobileDevice.addDevice.host">
+      <!--
+      <span class="pull-left">Host</span> 
+      -->
+      <vc-tool-tip 
+      tool-tip-lable      = "tooltip.configurationMobileDevice.connectionConfiguration.host.lable" 
+      title-description   = "tooltip.configurationMobileDevice.connectionConfiguration.host.titledescription"
+      field-uid           = "tooltip.configurationMobileDevice.connectionConfiguration.host">
+      </vc-tool-tip>
+   </td>  
+    <td><input type="text" class="comTextbox" ng-model="mobileDevice.addDevice.port">
+      <!--
+      <span class="pull-left">Port</span> 
+      -->
+      <vc-tool-tip 
+      tool-tip-lable      = "tooltip.configurationMobileDevice.connectionConfiguration.port.lable" 
+      title-description   = "tooltip.configurationMobileDevice.connectionConfiguration.port.titledescription"
+      field-uid           = "tooltip.configurationMobileDevice.connectionConfiguration.port">
+      </vc-tool-tip>
+    </td>  
+    </tr>
+    
+        <tr>
+   <td><input type="text" class="comTextbox" ng-model="mobileDevice.addDevice.username">
+      <!--
+      <span class="pull-left">User Name</span>
+      -->
+      <vc-tool-tip 
+      tool-tip-lable      = "tooltip.configurationMobileDevice.connectionConfiguration.username.lable" 
+      title-description   = "tooltip.configurationMobileDevice.connectionConfiguration.username.titledescription"
+      field-uid           = "tooltip.configurationMobileDevice.connectionConfiguration.username">
+      </vc-tool-tip>
+    </td>  
+    <td><input type="Password" class="comTextbox" ng-model="mobileDevice.addDevice.password">
+      <!--
+      <span class="pull-left">Password</span> 
+      -->
+      <vc-tool-tip 
+      tool-tip-lable      = "tooltip.configurationMobileDevice.connectionConfiguration.password.lable" 
+      title-description   = "tooltip.configurationMobileDevice.connectionConfiguration.password.titledescription"
+      field-uid           = "tooltip.configurationMobileDevice.connectionConfiguration.password">
+      </vc-tool-tip>
+    </td>  
+    </tr>
+    
+    <tr> <td colspan="2"><input type="text" class="comTextbox" vc-require="true" ng-model="mobileDevice.addDevice.dataExchange" required>
+      <!--
+      <span class="pull-left">File exchange folder*</span> 
+      -->
+
+      <vc-tool-tip 
+      tool-tip-lable      = "tooltip.configurationMobileDevice.connectionConfiguration.dataExchange.lable" 
+      title-description   = "tooltip.configurationMobileDevice.connectionConfiguration.dataExchange.titledescription"
+      field-uid           = "tooltip.configurationMobileDevice.connectionConfiguration.dataExchange"
+      title-mandatory     = "true">
+      </vc-tool-tip>
+
+    </td>  </tr>
+     <tr> <td colspan="2"><textarea rows="2" class="comTextbox" id="" name="" ng-model="mobileDevice.addDevice.note"></textarea>
+     <!--
+     <span class="pull-left">Notes</span> 
+     -->
+
+      <vc-tool-tip 
+      tool-tip-lable      = "tooltip.configurationMobileDevice.connectionConfiguration.note.lable" 
+      title-description   = "tooltip.configurationMobileDevice.connectionConfiguration.note.titledescription"
+      field-uid           = "tooltip.configurationMobileDevice.connectionConfiguration.note">
+      </vc-tool-tip>
+
+     </td>  </tr>
+                      
+
+					    </tbody></table>					  
+				 
+                 </div></div>
+                 
+				<p class="blankSpace">&nbsp; </p>
+				</div>
+   </form>
